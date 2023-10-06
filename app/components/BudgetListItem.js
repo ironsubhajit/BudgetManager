@@ -2,10 +2,10 @@ import React from "react";
 import { ListItem } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
-const BudgetListItem = ({props}) => {
+const BudgetListItem = ({ props }) => {
   const handleItemClick = () => {
-    console.log('list item clicked', props)
-  }
+    console.log("list item clicked", props);
+  };
   return (
     <>
       <ListItem

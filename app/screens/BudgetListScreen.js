@@ -15,46 +15,22 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import BudgetListItem from "../components/BudgetListItem";
 import colors from "../configs/colors";
 
 const BudgetListScreen = ({ navigation }) => {
-
+  const dispatch = useDispatch();
+  const budgetList = useSelector((state) => state?.budgets?.budgetItems);
 
   return (
     <>
       {/* List of budgets */}
       <ScrollView>
-        <BudgetListItem
-          onClick={() => navigation?.navigate("Details")}
-          props={{ item_name: "item 01" }}
-        />
-        <BudgetListItem props={{ item_name: "item 02" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
-        <BudgetListItem props={{ item_name: "item 03" }} />
+        {budgetList?.map((budgetItem, index) => (
+          <BudgetListItem props={budgetItem} key={index}/>
+        ))}
       </ScrollView>
       {/* Add budget button */}
       <Stack style={addButton.container}>
