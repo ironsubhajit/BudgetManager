@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Stack,
-  FAB,
-  Switch,
   Button,
-  IconButton,
 } from "@react-native-material/core";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import {
-  SafeAreaView,
   StyleSheet,
-  Text,
-  View,
-  Platform,
   ScrollView,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +29,7 @@ const BudgetListScreen = ({ navigation }) => {
         <Button
           onPress={() => navigation.navigate("AddBudgetScreen")}
           style={addButton.button}
-          title="add budget"
+          title="add new budget"
         />
       </Stack>
     </>

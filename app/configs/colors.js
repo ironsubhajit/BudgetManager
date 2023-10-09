@@ -1,7 +1,9 @@
 export default {
-  danger: "#A7173E",
+  danger: "#F44336",
   dark: "#121212",
-  primary: "#00AFDC",
+  grey: "#90A4AE",
+  grey_02: "#878787",
+  primary: "#2196F3",
   success: "#01DB92",
   warning: "#E69C08",
   white: "#ffffff",
