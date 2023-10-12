@@ -18,6 +18,8 @@ const BudgetDetailScreen = ({ navigation }) => {
 
   const hideDialog = () => setVisible(false);
 
+  const props = {...route?.params}
+
   const deleteItem = () => {
     hideDialog();
     console.log("item deleted !"); // Todo: write delete code here
@@ -28,19 +30,19 @@ const BudgetDetailScreen = ({ navigation }) => {
     <>
       <Card style={cardStyles.container}>
         <Card.Content>
-          <Text variant="titleLarge">{route.params?.item_name}</Text>
+          <Text variant="titleLarge">{props?.ITEM_NAME}</Text>
           <Text style={cardStyles.contentField} variant="bodyMedium">
-            Predicted Amount: $ {route?.params?.predicted_amount}
+            Predicted Amount: $ {props?.PREDICTED_AMOUNT}
           </Text>
           <Text style={cardStyles.contentField} variant="bodyMedium">
-            Actual Amount: $ {route?.params?.actual_amount}
+            Actual Amount: $ {props?.ACTUAL_AMOUNT}
           </Text>
         </Card.Content>
       </Card>
       {/* Action buttons */}
       <Stack style={buttonStyle.container}>
         <Button
-          onPress={() => navigation.navigate("EditBudgetScreen")}
+          onPress={() => navigation.navigate("EditBudgetScreen", {...props})}
           style={[buttonStyle.button, buttonStyle.editBtn]}
           title="Edit Budget"
         />
@@ -56,7 +58,7 @@ const BudgetDetailScreen = ({ navigation }) => {
         <Dialog visible={visible} onDismiss={hideDialog}>
           <Dialog.Icon icon="alert" />
           <Dialog.Title style={dialogStyles.title}>
-            Are you sure to delete {route?.params?.item_name} ?
+            Are you sure to delete {props?.ITEM_NAME} ?
           </Dialog.Title>
           <Dialog.Actions>
             <PaperBtn

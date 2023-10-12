@@ -9,6 +9,11 @@ import colors from "../configs/colors";
 import { TextInput } from "react-native-paper";
 
 const AddBudgetScreen = ({navigation}) => {
+
+  const saveBudget= () => {
+    // Todo: must covert numbers to string for the amounts before save
+  }
+
   return (
     <>
       <View style={inputFieldStyles?.container}>

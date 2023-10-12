@@ -1,0 +1,3 @@
+export const ITEM_NAME = "ITEM_NAME";
+export const PREDICTED_AMOUNT = "PREDICTED_AMOUNT";
+export const ACTUAL_AMOUNT = "ACTUAL_AMOUNT";

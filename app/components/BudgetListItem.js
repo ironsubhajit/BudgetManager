@@ -12,7 +12,7 @@ const BudgetListItem = ({ props }) => {
   return (
     <>
       <ListItem
-        title={props?.item_name}
+        title={props?.ITEM_NAME}
         onPress={handleItemClick}
         leading={<Icon name="currency-usd" size={24} />}
         trailing={(props) => <Icon name="chevron-right" {...props} />}

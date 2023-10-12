@@ -1,13 +1,14 @@
 import * as action_types from '../actions/action_types';
+import * as InputFieldNames from '../../configs/InputFieldsNames';
 
 
 
 // Each Budget item interface: 
 // {
 //   id: string,
-//   item_name: string,
-//   predicted_amount: number,
-//   actual_amount: number
+//   ITEM_NAME: string,
+//   PREDICTED_AMOUNT: number,
+//   ACTUAL_AMOUNT: number
 // }
 
 
@@ -15,27 +16,27 @@ import * as action_types from '../actions/action_types';
 demo_budget_data = [
   {
     "id": 1,
-    "item_name": "item 01",
-    "predicted_amount": 1000,
-    "actual_amount": 200
+    "ITEM_NAME": "item 01",
+    "PREDICTED_AMOUNT": 1000,
+    "ACTUAL_AMOUNT": 200
   },
   {
     "id": 2,
-    "item_name": "item 02",
-    "predicted_amount": 1000,
-    "actual_amount": 200
+    "ITEM_NAME": "item 02",
+    "PREDICTED_AMOUNT": 1000,
+    "ACTUAL_AMOUNT": 200
   },
   {
     "id": 3,
-    "item_name": "item 03",
-    "predicted_amount": 1000,
-    "actual_amount": 200
+    "ITEM_NAME": "item 03",
+    "PREDICTED_AMOUNT": 1000,
+    "ACTUAL_AMOUNT": 200
   },
   {
     "id": 4,
-    "item_name": "item 04",
-    "predicted_amount": 1000,
-    "actual_amount": 200
+    "ITEM_NAME": "item 04",
+    "PREDICTED_AMOUNT": 1000,
+    "ACTUAL_AMOUNT": 200
   },
 ]
 // Define initial state
