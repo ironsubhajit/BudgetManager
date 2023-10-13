@@ -1,7 +1,4 @@
 import * as action_types from '../actions/action_types';
-import * as InputFieldNames from '../../configs/InputFieldsNames';
-
-
 
 // Each Budget item interface: 
 // {

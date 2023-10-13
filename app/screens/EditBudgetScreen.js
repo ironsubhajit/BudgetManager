@@ -7,10 +7,12 @@ import { useState } from "react";
 
 import colors from "../configs/colors";
 import * as InputFieldNames from "../configs/InputFieldsNames";
+import { useDispatch } from "react-redux";
+import { updateBudgetItem } from "../redux/actions/actions";
 
 const EditBudgetScreen = ({ navigation }) => {
   const route = useRoute();
-
+  const dispatch = useDispatch();
   // Initial state for edit form
   const initialState = {
     ...route?.params,
@@ -20,17 +22,15 @@ const EditBudgetScreen = ({ navigation }) => {
 
   // Set changed input field value
   const handleInputChange = async (key, text) => {
-    setEditBudgetForm({ ...editBudgetForm, [key]: text});
+    setEditBudgetForm({ ...editBudgetForm, [key]: text });
   };
 
-
   // Todo: implement Update function
-  const updateBudgetChanges = () => {
-    console.log("Updated data: ", editBudgetForm)
+  const updateBudgetChanges = async () => {
+    console.log("Updated data: ", editBudgetForm);
+    await dispatch(updateBudgetItem(editBudgetForm));
     navigation.goBack();
-  }
-
-
+  };
 
   return (
     <>

@@ -12,6 +12,7 @@ import BudgetDetailScreen from "./app/screens/BudgetDetailScreen";
 import { PaperProvider } from "react-native-paper";
 import { name as appName } from "./app.json";
 import { AppRegistry } from "react-native";
+import "react-native-get-random-values";
 
 const Stack = createNativeStackNavigator();
 

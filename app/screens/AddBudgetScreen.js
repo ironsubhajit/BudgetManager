@@ -1,18 +1,42 @@
 import { Button, Stack } from "@react-native-material/core";
 import React from "react";
-import {
-  View,
-  StyleSheet,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
+import { TextInput } from "react-native-paper";
+import { useRoute } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import colors from "../configs/colors";
-import { TextInput } from "react-native-paper";
+import * as InptFieldNames from "../configs/InputFieldsNames";
+import { addBudgetItem } from "../redux/actions/actions";
 
-const AddBudgetScreen = ({navigation}) => {
+const AddBudgetScreen = ({ navigation }) => {
+  const route = useRoute();
+  // Generate a unique key using uuidv4
+  const uniqueKey = uuidv4();
 
-  const saveBudget= () => {
-    // Todo: must covert numbers to string for the amounts before save
-  }
+  // Initial state for edit form
+  const initialState = {
+    id: uniqueKey,
+    ITEM_NAME: "",
+    PREDICTED_AMOUNT: "",
+    ACTUAL_AMOUNT: "",
+  };
+  const dispatch = useDispatch();
+  const [addBudgetForm, setAddBudgetForm] = useState(initialState);
+
+  // Set changed input field value
+  const handleInputChange = async (key, text) => {
+    setAddBudgetForm({ ...addBudgetForm, [key]: text });
+  };
+
+  // Todo: must covert numbers to string for the amounts before save
+  const saveBudget = async () => {
+    console.log("item saved");
+    await dispatch(addBudgetItem(addBudgetForm));
+    navigation.goBack();
+  };
 
   return (
     <>
@@ -21,28 +45,36 @@ const AddBudgetScreen = ({navigation}) => {
           mode="outlined"
           label="Budget Name"
           placeholder="Enter budget item name"
-          value=""
+          value={addBudgetForm.ITEM_NAME}
+          onChangeText={(text) =>
+            handleInputChange(InptFieldNames.ITEM_NAME, text)
+          }
           style={inputFieldStyles?.inputField}
-          right={<TextInput.Affix text="/100" />}
         />
         <TextInput
           mode="outlined"
           label="Predicted amount"
           placeholder="Predicted budget amount"
-          value=""
+          value={addBudgetForm.PREDICTED_AMOUNT}
+          onChangeText={(text) =>
+            handleInputChange(InptFieldNames.PREDICTED_AMOUNT, text)
+          }
           style={inputFieldStyles?.inputField}
         />
         <TextInput
           mode="outlined"
           label="Actual amount"
           placeholder="Actual budget amount"
-          value=""
+          value={addBudgetForm.ACTUAL_AMOUNT}
+          onChangeText={(text) =>
+            handleInputChange(InptFieldNames.ACTUAL_AMOUNT, text)
+          }
           style={inputFieldStyles?.inputField}
         />
       </View>
       <Stack style={addButton.container}>
         <Button
-          onPress={() => navigation.navigate("AddBudgetScreen")}
+          onPress={saveBudget}
           style={[addButton.button, addButton.saveButton]}
           title="save"
         />
