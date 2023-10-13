@@ -1,6 +1,6 @@
 import { Button, Stack } from "@react-native-material/core";
 import { useRoute } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import {
   Card,
@@ -11,18 +11,29 @@ import {
 } from "react-native-paper";
 
 import colors from "../configs/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteBudgetItem } from "../redux/actions/actions";
 
 const BudgetDetailScreen = ({ navigation }) => {
   const route = useRoute();
+  const dispatch = useDispatch();
   const [visible, setVisible] = React.useState(false);
 
   const hideDialog = () => setVisible(false);
 
-  const props = {...route?.params}
+  const budgetList = useSelector((state) => state?.budgets?.budgetItems);
 
-  const deleteItem = () => {
+  // const props = {...route?.params}
+  
+
+  // useEffect();
+
+  const props = budgetList.find((item) => item.id === route?.params?.id)
+
+  const deleteItem = async () => {
     hideDialog();
-    console.log("item deleted !"); // Todo: write delete code here
+    console.log("item deleted ! - ", props.id);
+    await dispatch(deleteBudgetItem(props.id))
     navigation.navigate("BudgetListScreen");
   };
 
