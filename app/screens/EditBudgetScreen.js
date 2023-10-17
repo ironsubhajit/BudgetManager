@@ -25,7 +25,6 @@ const EditBudgetScreen = ({ navigation }) => {
     setEditBudgetForm({ ...editBudgetForm, [key]: text });
   };
 
-  // Todo: implement Update function
   const updateBudgetChanges = async () => {
     console.log("Updated data: ", editBudgetForm);
     await dispatch(updateBudgetItem(editBudgetForm));

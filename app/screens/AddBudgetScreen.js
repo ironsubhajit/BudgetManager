@@ -31,7 +31,6 @@ const AddBudgetScreen = ({ navigation }) => {
     setAddBudgetForm({ ...addBudgetForm, [key]: text });
   };
 
-  // Todo: must covert numbers to string for the amounts before save
   const saveBudget = async () => {
     console.log("item saved");
     await dispatch(addBudgetItem(addBudgetForm));
