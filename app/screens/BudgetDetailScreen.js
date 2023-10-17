@@ -23,11 +23,6 @@ const BudgetDetailScreen = ({ navigation }) => {
 
   const budgetList = useSelector((state) => state?.budgets?.budgetItems);
 
-  // const props = {...route?.params}
-  
-
-  // useEffect();
-
   const props = budgetList.find((item) => item.id === route?.params?.id)
 
   const deleteItem = async () => {
