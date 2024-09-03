@@ -8,6 +8,7 @@ import colors from "../configs/colors";
 import { loadBudgetList, resetStorage } from "../redux/actions/actions";
 import { useEffect } from "react";
 import { Dialog, Portal, Button as PaperBtn } from "react-native-paper";
+import NoDataFound from "../components/NoDataFound";
 
 const BudgetListScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -30,9 +31,13 @@ const BudgetListScreen = ({ navigation }) => {
     <>
       {/* List of budgets */}
       <ScrollView>
-        {budgetList?.map((budgetItem, index) => (
-          <BudgetListItem props={budgetItem} key={index} />
-        ))}
+        {budgetList?.length ? (
+          budgetList.map((budgetItem, index) => (
+            <BudgetListItem props={budgetItem} key={index} />
+          ))
+        ) : (
+          <NoDataFound/>
+        )}
       </ScrollView>
       {/* Add budget button */}
       <Stack style={addButton.container}>
